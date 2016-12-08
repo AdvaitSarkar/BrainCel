@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+
+  	<link rel="stylesheet" type="text/css" href="style.css">
+  	<script src="handsontable/handsontable.full.js"></script>
+	<link rel="stylesheet" media="screen" href="handsontable/handsontable.full.css">
+    <script src="vis/vis.js"></script>
+    <link rel="stylesheet" media="screen" href="vis/vis.css">
+
+    <script src="Chart.js"></script>
+    <title>BrainCel v0.2</title>
+  </head>
+  <body>
+  	<h1>BrainCel v0.2</h1>
+    <button onmousedown="loadData()">Load data</button>
+    <input type="file" id="input">
+    <br><hr>
+    <!--<button>Brain</button>-->
+    <button onmousedown="teach()">Learn selected rows</button>
+    <button onmousedown="forget()">Forget selected rows</button>
+    <button onmousedown="forgetAll()">Forget all</button>
+    <button onmousedown="try_selection()">Guess selected empty cells</button>
+    <button onmousedown="">Delete selected rows</button>
+    <button onmousedown="">Add new row</button>
+    <button onmousedown="refresh_confidences()">Think</button>
+    <!--<button onmousedown="try_all()">Guess all empty cells</button>-->
+    <br><br>
+    <table class="structural">
+    	<tr>
+    		<td style="vertical-align:top">
+    			<div style="position:relative;" >
+	    			<canvas id="dataCanvas">
+						Canvas not supported.
+					</canvas>
+					<!-- beware: z-index obscures click events from passing through -->
+					<!-- the stylesheet is important to allow this to move -->
+					<span id="lensContainer">
+						<canvas id="lens" width="auto" height="auto">
+							Canvas not supported.
+						</canvas>
+					</span>
+    			</div>
+    		</td>
+    		<td style="vertical-align:top">
+    			<table class="structural">
+    			<tr>
+                    <td>
+                        <div id="sheetContainer"></div>
+                    </td>
+                </tr>
+    			<tr>
+    				<td>
+                        <p style="display:none">The reason I have picked the value <span id="selectedCell"></span> is because I thought it would fit the model.</p>
+                        <div style="border: 1px solid #ccc" id="network"></div>
+    				</td>
+    			</tr>
+                <tr>
+                    <td id="distributions">
+                        <div id="legend"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="distanceHistoryHolder">
+                            <p>The machine's overall confusion over time</p>
+                            <canvas id="distanceHistory">
+                                Canvas not supported
+                            </canvas>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="divergenceHistoryHolder">
+                            <p>Discrepancy between taught and overall data distributions over time</p>
+                            <canvas id="divergenceHistory">
+                                Canvas not supported
+                            </canvas>
+                        </div>
+                    </td>
+                </tr>
+    			</table>
+    		</td>
+    	</tr>
+    </table>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
+      
